@@ -66,7 +66,7 @@
     top: 0;
     z-index: 100;
     padding: 9px 13px;
-    border-radius: 8px;
+    border-radius: 2px;
     background: var(--gold);
     color: #171106;
     font-size: 13px;
@@ -131,7 +131,7 @@
   .head-nav { display: flex; align-items: center; gap: 3px; }
   .head-nav a {
     padding: 7px 10px;
-    border-radius: 7px;
+    border-radius: 2px;
     color: var(--muted);
     font-size: 13px;
     text-decoration: none;
@@ -145,15 +145,15 @@
   .hero { padding: 84px 0 100px; }
   .hero-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1.08fr) minmax(320px, .92fr);
+    grid-template-columns: minmax(0, 1.16fr) minmax(320px, .84fr);
     gap: 56px;
     align-items: center;
   }
   .hero h1 {
     margin: 0;
-    font-size: clamp(40px, 6.2vw, 68px);
-    line-height: 1.12;
-    letter-spacing: -.035em;
+    font-size: clamp(46px, 6.8vw, 84px);
+    line-height: 1.1;
+    letter-spacing: -.04em;
     font-weight: 700;
   }
   .hero .lead {
@@ -171,7 +171,7 @@
     min-height: 42px;
     padding: 0 18px;
     border: 1px solid var(--line);
-    border-radius: 9px;
+    border-radius: 2px;
     color: var(--text);
     font-size: 13.5px;
     text-decoration: none;
@@ -284,9 +284,9 @@
   }
   .section-head h2 {
     margin: 0;
-    font-size: clamp(22px, 3vw, 30px);
-    line-height: 1.3;
-    letter-spacing: -.02em;
+    font-size: clamp(26px, 3.8vw, 40px);
+    line-height: 1.25;
+    letter-spacing: -.025em;
     font-weight: 650;
   }
   .section-head h2::before {
@@ -313,7 +313,7 @@
     display: inline-block;
     padding: 2px 9px;
     border: 1px solid var(--line);
-    border-radius: 999px;
+    border-radius: 2px;
     color: var(--gold);
     font-size: 11px;
     line-height: 1.6;
@@ -331,56 +331,82 @@
   .path-links a:hover { color: var(--gold); border-color: var(--gold); }
 
   /* ---------- projects ---------- */
-  .project-list { margin: 0; padding: 0; list-style: none; border-bottom: 1px solid var(--line); }
-  .project-row {
-    display: grid;
-    grid-template-columns: 150px minmax(0, 1fr) 64px;
-    gap: 24px;
-    align-items: start;
-    padding: 22px 0;
-    border-top: 1px solid var(--line);
+  .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    background: rgba(13, 20, 32, .72);
     text-decoration: none;
+    transition: border-color .25s ease, background .25s ease;
   }
-  .project-row:hover { background: linear-gradient(90deg, rgba(230, 200, 138, .055), transparent 72%); }
-  .project-row.featured {
-    margin: 8px 0;
-    padding: 24px 22px;
-    border: 1px solid var(--line);
-    border-radius: 14px;
-    background: linear-gradient(135deg, rgba(230, 200, 138, .09), rgba(230, 200, 138, .02) 58%, transparent);
+  .project-card:hover { border-color: var(--gold); background: rgba(17, 25, 39, .86); }
+  .project-card.featured { grid-column: 1 / -1; border-color: rgba(230, 200, 138, .28); }
+  .shot-bar {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 9px 12px;
+    border-bottom: 1px solid var(--line-soft);
+    background: rgba(8, 13, 21, .62);
   }
-  .project-row.featured:hover {
-    background: linear-gradient(135deg, rgba(230, 200, 138, .13), rgba(230, 200, 138, .03) 58%, transparent);
+  .dots { display: flex; flex: none; gap: 4px; }
+  .dots i { width: 5px; height: 5px; border-radius: 50%; background: rgba(255, 255, 255, .18); }
+  .dots i:first-child { background: rgba(230, 200, 138, .55); }
+  .domain {
+    overflow: hidden;
+    color: var(--muted);
+    font-size: 10.5px;
+    letter-spacing: .02em;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
-  .project-meta { display: flex; flex-direction: column; align-items: flex-start; gap: 7px; padding-top: 3px; }
+  .shot { position: relative; aspect-ratio: 16 / 9; overflow: hidden; background: #0b111b; }
+  .shot img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    transition: transform .7s cubic-bezier(.16, 1, .3, 1);
+  }
+  .project-card:hover .shot img { transform: scale(1.035); }
+  .project-card.featured .shot { aspect-ratio: 2.15 / 1; }
+  .project-kicker { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 10px; }
   .tag {
-    padding: 2px 9px;
+    padding: 2px 8px;
     border: 1px solid var(--line);
-    border-radius: 999px;
+    border-radius: 2px;
     color: var(--muted);
     font-size: 11px;
     line-height: 1.6;
   }
   .start-badge { color: var(--gold); font-size: 10.5px; }
-  .project-body h3 {
-    margin: 0 0 4px;
-    font-size: 21px;
-    line-height: 1.4;
+  .project-card.featured .project-info { padding: 22px 24px 24px; }
+  .project-card.featured .project-info h3 { font-size: clamp(26px, 3.2vw, 36px); }
+  .project-card.featured .project-info p { max-width: 780px; font-size: 14px; }
+  .project-info { display: flex; flex: 1; flex-direction: column; padding: 16px 18px 18px; }
+  .project-info h3 {
+    margin: 7px 0 4px;
+    font-size: 20px;
+    line-height: 1.35;
     letter-spacing: -.015em;
     font-weight: 600;
   }
-  .project-row:hover h3 { color: var(--gold); }
-  .project-body p { max-width: 660px; margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.7; }
+  .project-info p { margin: 0; color: var(--muted); font-size: 13.5px; line-height: 1.65; }
   .project-open {
-    justify-self: end;
-    align-self: center;
+    display: inline-block;
+    width: fit-content;
+    margin-top: 12px;
     padding-bottom: 2px;
     border-bottom: 1px solid var(--line);
     color: var(--muted);
     font-size: 12.5px;
-    white-space: nowrap;
   }
-  .project-row:hover .project-open { color: var(--gold); border-color: var(--gold); }
+  .project-card:hover .project-info h3 { color: var(--gold); }
+  .project-card:hover .project-open { color: var(--gold); border-color: var(--gold); }
 
   /* ---------- about ---------- */
   .principles { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; }
@@ -442,14 +468,18 @@
     .brand-tag { display: none; }
     .head-nav a.hide-mobile { display: none; }
     .hero { padding: 46px 0 64px; }
-    .hero h1 { font-size: clamp(38px, 11vw, 52px); }
+    .hero h1 { font-size: clamp(40px, 12vw, 54px); }
     .hero .lead { font-size: 15.5px; }
     .hero-visual { min-height: 280px; }
     .moon-wrap { width: min(100%, 280px); }
     .section { padding: 64px 0; }
     .section-head { flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 24px; }
-    .project-row { grid-template-columns: 1fr; gap: 8px; padding: 20px 0; }
-    .project-row.featured { padding: 20px 18px; }
+    .project-grid { grid-template-columns: 1fr; gap: 14px; }
+    .project-card.featured .shot { aspect-ratio: 4 / 3; }
+    .project-info { padding: 14px 16px 16px; }
+    .project-card.featured .project-info { padding: 16px 18px 18px; }
+    .project-card.featured .project-info h3 { font-size: 26px; }
+    .project-card.featured .project-info p { font-size: 13.5px; }
     .foot-wordmark { font-size: clamp(96px, 26vw, 160px); }
     .project-meta { flex-direction: row; align-items: center; }
     .project-open { justify-self: start; margin-top: 2px; }
@@ -586,78 +616,78 @@
         <h2>全部项目</h2>
         <p>7 个仓库，都是自己用着顺手才做的，没有一个是练手项目。</p>
       </div>
-      <ul class="project-list">
-        <li>
-          <a class="project-row featured" href="https://yanwaiyue-name.github.io/xiaobai-to-dalao/">
-            <span class="project-meta"><span class="tag">教程</span><span class="start-badge">从这里开始</span></span>
-            <div class="project-body">
-              <h3>小白成为计算机大佬</h3>
-              <p>写给纯小白的计算机入门：科学上网 + Windows 环境部署。每章只回答装什么、怎么装、怎么确认装好了。</p>
-            </div>
+      <div class="project-grid">
+        <a class="project-card featured" href="https://yanwaiyue-name.github.io/xiaobai-to-dalao/">
+          <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span class="domain">xiaobai-to-dalao</span></div>
+          <div class="shot"><img src="assets/preview-xiaobai.png" alt="小白成为计算机大佬页面预览" loading="lazy"></div>
+          <div class="project-info">
+            <div class="project-kicker"><span class="tag">教程</span><span class="start-badge">从这里开始</span></div>
+            <h3>小白成为计算机大佬</h3>
+            <p>写给纯小白的计算机入门：科学上网 + Windows 环境部署。每章只回答装什么、怎么装、怎么确认装好了。</p>
             <span class="project-open">打开</span>
-          </a>
-        </li>
-        <li>
-          <a class="project-row" href="https://yanwaiyue-name.github.io/ai-starter-kit-zh/">
-            <span class="project-meta"><span class="tag">路线</span></span>
-            <div class="project-body">
-              <h3>AI 玩家 0→1 套件</h3>
-              <p>六步把环境、网络、工具、Agent、副业和算账串成一条路径，附一键拉取脚本。</p>
-            </div>
+          </div>
+        </a>
+        <a class="project-card" href="https://yanwaiyue-name.github.io/ai-starter-kit-zh/">
+          <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span class="domain">ai-starter-kit-zh</span></div>
+          <div class="shot"><img src="assets/preview-starter.png" alt="AI 玩家 0→1 套件页面预览" loading="lazy"></div>
+          <div class="project-info">
+            <div class="project-kicker"><span class="tag">路线</span></div>
+            <h3>AI 玩家 0→1 套件</h3>
+            <p>六步把环境、网络、工具、Agent、副业和算账串成一条路径，附一键拉取脚本。</p>
             <span class="project-open">打开</span>
-          </a>
-        </li>
-        <li>
-          <a class="project-row" href="https://yanwaiyue-name.github.io/agent-download/">
-            <span class="project-meta"><span class="tag">工具</span></span>
-            <div class="project-body">
-              <h3>AI 客户端下载中心</h3>
-              <p>48 款 AI 工具的官方地址，按架构自动选版本，下载后校验 SHA256，链接每周体检。</p>
-            </div>
+          </div>
+        </a>
+        <a class="project-card" href="https://yanwaiyue-name.github.io/agent-download/">
+          <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span class="domain">agent-download</span></div>
+          <div class="shot"><img src="assets/preview-download.png" alt="AI 客户端下载中心页面预览" loading="lazy"></div>
+          <div class="project-info">
+            <div class="project-kicker"><span class="tag">工具</span></div>
+            <h3>AI 客户端下载中心</h3>
+            <p>48 款 AI 工具的官方地址，按架构自动选版本，下载后校验 SHA256，链接每周体检。</p>
             <span class="project-open">打开</span>
-          </a>
-        </li>
-        <li>
-          <a class="project-row" href="https://yanwaiyue-name.github.io/ai-agent-hub-zh/">
-            <span class="project-meta"><span class="tag">索引</span></span>
-            <div class="project-body">
-              <h3>AI Agent 工坊</h3>
-              <p>编码代理、Skills、模型网关和免费额度资源的中文索引，32 条，链接每周体检。</p>
-            </div>
+          </div>
+        </a>
+        <a class="project-card" href="https://yanwaiyue-name.github.io/ai-agent-hub-zh/">
+          <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span class="domain">ai-agent-hub-zh</span></div>
+          <div class="shot"><img src="assets/preview-agenthub.png" alt="AI Agent 工坊页面预览" loading="lazy"></div>
+          <div class="project-info">
+            <div class="project-kicker"><span class="tag">索引</span></div>
+            <h3>AI Agent 工坊</h3>
+            <p>编码代理、Skills、模型网关和免费额度资源的中文索引，32 条，链接每周体检。</p>
             <span class="project-open">打开</span>
-          </a>
-        </li>
-        <li>
-          <a class="project-row" href="https://yanwaiyue-name.github.io/ai-sidehustle-zh/">
-            <span class="project-meta"><span class="tag">指南</span></span>
-            <div class="project-body">
-              <h3>中文 AI 副业实战导航</h3>
-              <p>20 条可执行路径，成本、收益、证据等级和风险逐条写明，不喊“月入十万”。</p>
-            </div>
+          </div>
+        </a>
+        <a class="project-card" href="https://yanwaiyue-name.github.io/ai-sidehustle-zh/">
+          <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span class="domain">ai-sidehustle-zh</span></div>
+          <div class="shot"><img src="assets/preview-sidehustle.png" alt="中文 AI 副业实战导航页面预览" loading="lazy"></div>
+          <div class="project-info">
+            <div class="project-kicker"><span class="tag">指南</span></div>
+            <h3>中文 AI 副业实战导航</h3>
+            <p>20 条可执行路径，成本、收益、证据等级和风险逐条写明，不喊“月入十万”。</p>
             <span class="project-open">打开</span>
-          </a>
-        </li>
-        <li>
-          <a class="project-row" href="https://yanwaiyue-name.github.io/students-howtolivebetter/">
-            <span class="project-meta"><span class="tag">指南</span></span>
-            <div class="project-body">
-              <h3>学生版人生指南</h3>
-              <p>18–25 岁的成本收益账本，19 章 106 条，每条标证据等级、出处和可逆性。</p>
-            </div>
+          </div>
+        </a>
+        <a class="project-card" href="https://yanwaiyue-name.github.io/students-howtolivebetter/">
+          <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span class="domain">students-howtolivebetter</span></div>
+          <div class="shot"><img src="assets/preview-students.png" alt="学生版人生指南页面预览" loading="lazy"></div>
+          <div class="project-info">
+            <div class="project-kicker"><span class="tag">指南</span></div>
+            <h3>学生版人生指南</h3>
+            <p>18–25 岁的成本收益账本，19 章 106 条，每条标证据等级、出处和可逆性。</p>
             <span class="project-open">打开</span>
-          </a>
-        </li>
-        <li>
-          <a class="project-row" href="https://yanwaiyue-name.github.io/airport-nav/">
-            <span class="project-meta"><span class="tag">索引</span></span>
-            <div class="project-body">
-              <h3>机场导航</h3>
-              <p>低价机场入口与客户端速查，每周自动体检，只记录能不能打开，不做推荐。</p>
-            </div>
+          </div>
+        </a>
+        <a class="project-card" href="https://yanwaiyue-name.github.io/airport-nav/">
+          <div class="shot-bar"><span class="dots"><i></i><i></i><i></i></span><span class="domain">airport-nav</span></div>
+          <div class="shot"><img src="assets/preview-airport.png" alt="机场导航页面预览" loading="lazy"></div>
+          <div class="project-info">
+            <div class="project-kicker"><span class="tag">索引</span></div>
+            <h3>机场导航</h3>
+            <p>低价机场入口与客户端速查，每周自动体检，只记录能不能打开，不做推荐。</p>
             <span class="project-open">打开</span>
-          </a>
-        </li>
-      </ul>
+          </div>
+        </a>
+      </div>
     </div>
   </section>
 
