@@ -15,7 +15,8 @@
   if (window.__YUESE_NAV_LOADED__) return;
   window.__YUESE_NAV_LOADED__ = true;
 
-  var PROFILE = 'https://github.com/yanwaiyue-name';
+  var HUB = 'https://yanwaiyue-name.github.io/yuese-nav/';
+  var GITHUB_URL = 'https://github.com/yanwaiyue-name';
 
   var PROJECTS = [
     {
@@ -411,7 +412,7 @@
       '<div class="bar-wrap">' +
         '<nav class="bar" aria-label="yuese 项目导航">' +
           '<div class="row">' +
-            '<a class="brand" href="' + PROFILE + '" target="_blank" rel="noopener">' +
+            '<a class="brand" href="' + HUB + '">' +
               MOON +
               '<span class="wordmark">yuese</span>' +
               '<span class="tagline">中文 AI 入门与工具</span>' +
@@ -426,7 +427,7 @@
               '<span class="long">全部项目</span><span class="short">项目</span>' +
               CHEV +
             '</button>' +
-            '<a class="gh" href="' + PROFILE + '" target="_blank" rel="noopener" aria-label="GitHub：yanwaiyue-name">' + GITHUB + '</a>' +
+            '<a class="gh" href="' + GITHUB_URL + '" target="_blank" rel="noopener" aria-label="GitHub：yanwaiyue-name">' + GITHUB + '</a>' +
           '</div>' +
           '<div class="panel" id="yuese-panel" hidden>' +
             '<div class="panel-inner">' +
@@ -442,7 +443,7 @@
                   '</a>';
                 }).join('') +
               '</div>' +
-              '<div class="panel-foot"><span>' + PROJECTS.length + ' 个开源项目</span><a href="' + PROFILE + '" target="_blank" rel="noopener">GitHub · yanwaiyue-name</a></div>' +
+              '<div class="panel-foot"><span>' + PROJECTS.length + ' 个开源项目</span><a href="' + GITHUB_URL + '" target="_blank" rel="noopener">GitHub · yanwaiyue-name</a></div>' +
             '</div>' +
           '</div>' +
         '</nav>' +
@@ -453,7 +454,7 @@
     return '<style>' + CSS + '</style>' +
       '<div class="foot-wrap">' +
         '<footer class="foot">' +
-          '<a class="foot-brand" href="' + PROFILE + '" target="_blank" rel="noopener">' +
+          '<a class="foot-brand" href="' + HUB + '">' +
             MOON +
             '<span class="wordmark">yuese</span>' +
           '</a>' +
@@ -465,7 +466,7 @@
           '</div>' +
           '<div class="foot-base">' +
             '<span>© ' + new Date().getFullYear() + ' yuese</span>' +
-            '<span><a href="' + PROFILE + '" target="_blank" rel="noopener">GitHub</a>　<button class="to-top" type="button">回到顶部</button></span>' +
+            '<span><a href="' + GITHUB_URL + '" target="_blank" rel="noopener">GitHub</a>　<button class="to-top" type="button">回到顶部</button></span>' +
           '</div>' +
         '</footer>' +
       '</div>';

@@ -1,6 +1,8 @@
-# yuese-nav · 跨站共享导航
+# yuese-nav · 跨站共享导航 + 总入口
 
-给 7 个 GitHub Pages 站点提供统一的顶部导航和底部项目页脚。导航逻辑和样式只维护这一份，站点通过一行 `<script>` 引用；**改 `nav.js` 一处，所有站点同时生效**。
+给 7 个 GitHub Pages 站点提供统一的顶部导航和底部项目页脚。仓库根目录的 `index.html` 是这些项目的总入口页：https://yanwaiyue-name.github.io/yuese-nav/
+
+导航逻辑和样式只维护这一份，站点通过一行 `<script>` 引用；**改 `nav.js` 一处，所有站点同时生效**。
 
 ## 接入方式
 
