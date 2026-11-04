@@ -47,6 +47,16 @@
       radial-gradient(900px 620px at 78% 4%, rgba(230, 200, 138, .10), transparent 62%),
       radial-gradient(700px 520px at 6% 20%, rgba(143, 176, 201, .055), transparent 66%);
   }
+  body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 60;
+    pointer-events: none;
+    opacity: .045;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+    background-size: 160px 160px;
+  }
   ::selection { background: rgba(230, 200, 138, .28); color: #fff; }
   a { color: inherit; }
   .wrap { width: 100%; max-width: var(--max); margin: 0 auto; padding: 0 28px; }
@@ -78,6 +88,15 @@
     -webkit-backdrop-filter: blur(14px);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--line-soft);
+  }
+  .site-head::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(230, 200, 138, .38), transparent);
   }
   .head-inner {
     display: flex;
@@ -167,6 +186,16 @@
   }
   .btn.primary:hover { background: #f0d9a5; color: #171106; }
   .hero-note { margin: 18px 0 0; color: var(--muted); font-size: 12.5px; }
+  .hero-note::before {
+    content: "";
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: var(--gold);
+    vertical-align: 1px;
+  }
 
   .hero-visual {
     position: relative;
@@ -174,6 +203,17 @@
     place-items: center;
     min-height: 440px;
   }
+  .stars { position: absolute; inset: -6%; pointer-events: none; }
+  .stars i { position: absolute; width: 2px; height: 2px; border-radius: 50%; background: rgba(255, 255, 255, .55); }
+  .stars i:nth-child(1) { top: 12%; left: 20%; }
+  .stars i:nth-child(2) { top: 24%; left: 78%; }
+  .stars i:nth-child(3) { top: 8%; left: 58%; }
+  .stars i:nth-child(4) { top: 48%; left: 7%; }
+  .stars i:nth-child(5) { top: 70%; left: 86%; }
+  .stars i:nth-child(6) { top: 82%; left: 30%; }
+  .stars i:nth-child(7) { top: 38%; left: 94%; }
+  .stars i:nth-child(8) { top: 62%; left: 2%; }
+  .stars i:nth-child(3n) { background: rgba(230, 200, 138, .65); }
   .moon-wrap {
     position: relative;
     display: grid;
@@ -199,18 +239,20 @@
   .orbit-dots {
     transform-origin: 200px 200px;
     animation: orbit 140s linear infinite;
+    filter: drop-shadow(0 0 3px rgba(230, 200, 138, .55));
   }
   @keyframes orbit { to { transform: rotate(360deg); } }
   .moon {
     position: relative;
-    width: 56%;
+    width: 62%;
     aspect-ratio: 1;
     border-radius: 50%;
     background: radial-gradient(circle at 34% 28%, #fbf0d2 0%, #efd9a6 26%, #d2af6d 54%, #9a763f 78%, #6f532c 100%);
     box-shadow:
-      0 0 70px rgba(230, 200, 138, .25),
+      0 0 84px rgba(230, 200, 138, .28),
       inset -18px -22px 46px rgba(0, 0, 0, .38),
-      inset 8px 8px 20px rgba(255, 245, 220, .25);
+      inset 8px 8px 20px rgba(255, 245, 220, .25),
+      inset 0 0 0 1px rgba(255, 245, 220, .10);
   }
   .moon::before,
   .moon::after {
@@ -221,6 +263,13 @@
   }
   .moon::before { top: 18%; left: 22%; width: 22%; height: 22%; }
   .moon::after { right: 24%; bottom: 20%; width: 14%; height: 14%; }
+  .crater {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 38% 35%, rgba(120, 95, 55, .30), rgba(120, 95, 55, .03) 70%);
+  }
+  .crater.c1 { top: 52%; left: 16%; width: 18%; height: 18%; opacity: .8; }
+  .crater.c2 { top: 34%; right: 18%; width: 9%; height: 9%; opacity: .7; }
 
   /* ---------- sections ---------- */
   .section { padding: 88px 0; border-top: 1px solid var(--line-soft); }
@@ -239,6 +288,15 @@
     line-height: 1.3;
     letter-spacing: -.02em;
     font-weight: 650;
+  }
+  .section-head h2::before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 1px;
+    margin-right: 12px;
+    background: var(--gold);
+    vertical-align: middle;
   }
   .section-head p {
     max-width: 430px;
@@ -284,7 +342,16 @@
     text-decoration: none;
   }
   .project-row:hover { background: linear-gradient(90deg, rgba(230, 200, 138, .055), transparent 72%); }
-  .project-row.featured { border-top-color: var(--gold); }
+  .project-row.featured {
+    margin: 8px 0;
+    padding: 24px 22px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(230, 200, 138, .09), rgba(230, 200, 138, .02) 58%, transparent);
+  }
+  .project-row.featured:hover {
+    background: linear-gradient(135deg, rgba(230, 200, 138, .13), rgba(230, 200, 138, .03) 58%, transparent);
+  }
   .project-meta { display: flex; flex-direction: column; align-items: flex-start; gap: 7px; padding-top: 3px; }
   .tag {
     padding: 2px 9px;
@@ -325,7 +392,22 @@
   .about-copy a:hover { border-color: var(--gold); }
 
   /* ---------- footer ---------- */
-  .site-foot { padding: 44px 0 36px; border-top: 1px solid var(--line); }
+  .site-foot { position: relative; overflow: hidden; padding: 44px 0 36px; border-top: 1px solid var(--line); }
+  .foot-wordmark {
+    position: absolute;
+    left: 50%;
+    bottom: -.24em;
+    transform: translateX(-50%);
+    font-family: Georgia, "Times New Roman", "Songti SC", "STSong", serif;
+    font-size: clamp(96px, 17vw, 220px);
+    line-height: .75;
+    letter-spacing: -.045em;
+    color: rgba(230, 200, 138, .05);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+  }
+  .site-foot .wrap { position: relative; z-index: 1; }
   .foot-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 40px; }
   .foot-brand { display: inline-flex; align-items: center; gap: 9px; color: var(--text); text-decoration: none; }
   .foot-brand .wordmark { font-size: 17px; }
@@ -367,6 +449,8 @@
     .section { padding: 64px 0; }
     .section-head { flex-direction: column; align-items: flex-start; gap: 8px; margin-bottom: 24px; }
     .project-row { grid-template-columns: 1fr; gap: 8px; padding: 20px 0; }
+    .project-row.featured { padding: 20px 18px; }
+    .foot-wordmark { font-size: clamp(96px, 26vw, 160px); }
     .project-meta { flex-direction: row; align-items: center; }
     .project-open { justify-self: start; margin-top: 2px; }
     .foot-grid { grid-template-columns: 1fr; gap: 28px; }
@@ -430,9 +514,17 @@
         <p class="hero-note">全部开源，不编数据，每个结论都能核对。</p>
       </div>
       <div class="hero-visual" aria-hidden="true">
+        <div class="stars"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
         <div class="moon-wrap">
           <svg class="orbits" viewBox="0 0 400 400">
-            <circle cx="200" cy="200" r="148" fill="none" stroke="rgba(230,200,138,.22)" stroke-width="1" stroke-dasharray="2 7"/>
+            <defs>
+              <linearGradient id="ringGrad" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#e6c88a" stop-opacity=".45"/>
+                <stop offset=".5" stop-color="#e6c88a" stop-opacity=".10"/>
+                <stop offset="1" stop-color="#8fb0c9" stop-opacity=".22"/>
+              </linearGradient>
+            </defs>
+            <circle cx="200" cy="200" r="148" fill="none" stroke="url(#ringGrad)" stroke-width="1" stroke-dasharray="2 7"/>
             <circle cx="200" cy="200" r="188" fill="none" stroke="rgba(143,176,201,.12)" stroke-width="1"/>
             <g class="orbit-dots">
               <circle cx="200" cy="52" r="3.2" fill="#e6c88a"/>
@@ -444,7 +536,7 @@
               <circle cx="52" cy="200" r="3" fill="#e6c88a" opacity=".9"/>
             </g>
           </svg>
-          <div class="moon"></div>
+          <div class="moon"><span class="crater c1"></span><span class="crater c2"></span></div>
         </div>
       </div>
     </div>
@@ -603,6 +695,7 @@
 </main>
 
 <footer class="site-foot">
+  <div class="foot-wordmark" aria-hidden="true">yuese</div>
   <div class="wrap">
     <div class="foot-grid">
       <div>
