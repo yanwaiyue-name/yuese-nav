@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>yuese-nav · 导航组件预览</title>
+<style>
+  :root {
+    --bg: #f6f3ec;
+    --fg: #1d2433;
+    --muted: #646b7a;
+    --line: #e3ddd0;
+    --accent: #7c5f2c;
+  }
+  html[data-theme="dark"] {
+    --bg: #0b0f17;
+    --fg: #e9e6dd;
+    --muted: #9aa3b5;
+    --line: #222b3d;
+    --accent: #e6c88a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 15px/1.75 -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  }
+  .demo { max-width: 760px; margin: 0 auto; padding: 32px 20px 90px; }
+  h1 { margin: 0 0 8px; font-size: 28px; line-height: 1.25; letter-spacing: -.01em; }
+  .lead { margin: 0 0 26px; color: var(--muted); }
+  .controls { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 30px; }
+  .controls button {
+    padding: 7px 13px;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--fg);
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+  }
+  .controls button:hover { border-color: var(--accent); color: var(--accent); }
+  .note {
+    padding: 14px 16px;
+    border: 1px dashed var(--line);
+    border-radius: 10px;
+    color: var(--muted);
+    font-size: 13.5px;
+  }
+  .note b { color: var(--fg); }
+  code {
+    padding: 1px 5px;
+    border-radius: 4px;
+    background: color-mix(in srgb, var(--fg) 7%, transparent);
+    font-family: ui-monospace, Consolas, monospace;
+    font-size: .88em;
+  }
+  footer.demo-foot { margin-top: 44px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; }
+</style>
+</head>
+<body>
+<main class="demo">
+  <h1>7 个站点，一条导航</h1>
+  <p class="lead">这是共享导航组件的本地预览页。改 <code>nav.js</code> 一处，所有接入站点同时生效。</p>
+
+  <div class="controls">
+    <button type="button" data-set-theme="light">浅色导航</button>
+    <button type="button" data-set-theme="dark">深色导航</button>
+    <button type="button" data-set-theme="auto">跟随系统</button>
+  </div>
+
+  <div class="note">
+    <b>预览要点：</b>点「全部项目」展开项目面板；把窗口缩到 760px 以下看手机布局；
+    打印预览里导航和页脚会自动隐藏。导航使用 Shadow DOM，不会和宿主页面样式打架。
+  </div>
+
+  <footer class="demo-foot">宿主页面的页脚保持原样，共享页脚会追加在它后面。</footer>
+</main>
+
+<script src="./nav.js" data-site="demo" data-theme="light" data-max="760" defer></script>
+<script>
+  document.querySelectorAll('[data-set-theme]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var t = btn.getAttribute('data-set-theme');
+      document.documentElement.setAttribute('data-theme', t === 'auto' ? 'light' : t);
+      if (window.YueseNav) window.YueseNav.setTheme(t);
+    });
+  });
+</script>
+</body>
+</html>
